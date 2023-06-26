@@ -1,0 +1,28 @@
+<div class="search-selector">
+  <mat-form-field appearance="fill">
+    <mat-label>{{label}}</mat-label>
+    <mat-select [formControl]="valueForm" class="search">
+      <input
+        class="search-input"
+        [formControl]="searchControl"
+        [placeholder]="placeholder"
+      />
+
+      <ng-container *ngIf="(choices$ | async)?.length; else notResult">
+        <mat-option
+          *ngFor="let choice of choices$ | async"
+          (click)="selectValue(choice[valueFieldNameLocal])"
+          [value]="choice[valueFieldNameLocal]"
+        >
+          <ng-container *ngFor="let nameField of viewFieldNameLocal">
+            {{ choice[nameField] }}
+          </ng-container>
+        </mat-option>
+      </ng-container>
+
+      <ng-template #notResult>
+        <span class="not-result">not result</span>
+      </ng-template>
+    </mat-select>
+  </mat-form-field>
+</div>

@@ -1,0 +1,17 @@
+<app-search-selector
+  [label]="'Breed'"
+  [choices]="breedList$ | async"
+  [viewFieldName]="['name']"
+  (selectedValue)="selectedBreed($event)"
+></app-search-selector>
+
+
+
+
+<div style="width: 500px; height: 500px; margin: 0 auto">
+  <image-slider [slides]="slides"></image-slider>
+</div>
+
+
+
+
